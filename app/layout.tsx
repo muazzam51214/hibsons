@@ -1,10 +1,17 @@
-// app/layout.tsx
-import { jost } from '@/app/font';
-import type { Metadata } from 'next';
+import "./globals.css";
+import Layout from "@/components/Layout";
+import { Jost } from 'next/font/google';
 
-export const metadata: Metadata = {
-  title: 'Your App',
-  description: 'Your app description',
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+export const metadata = {
+  title: "Top Digital Staffing Agency for Businesses | Hibsons",
+  description:
+    "Choose digital staffing agency Hibsons for all your hiring needs. Find the best digital marketing recruiters to boost your business growth.",
 };
 
 export default function RootLayout({
@@ -13,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jost.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={`${jost.className} bg-white text-black`}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
