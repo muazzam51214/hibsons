@@ -9,7 +9,7 @@ const AboutUsSection = () => {
           <div className="lg:w-2/5 mb-12 lg:mb-0 lg:pr-10">
             <div className="relative rounded-xl overflow-hidden shadow-xl">
               <Image
-                src="/images/about-us-img.webp"
+                src="/images/about-us-img.jpg"
                 alt="Hibsons team collaborating"
                 width={600}
                 height={600}

@@ -13,7 +13,7 @@ const HeroSection = () => {
                 Digital Staffing Redefined
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Hire Top Tech Talent <span className="text-indigo-600">Faster</span>
+                Effortless Growth with <span className="text-indigo-600">Remote Experts</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8">
                 We connect businesses with pre-vetted digital professionals. 
@@ -52,7 +52,7 @@ const HeroSection = () => {
           <div className="md:w-1/2">
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/hero-img.webp"
+                src="/images/hero-img.jpg"
                 alt="Digital team collaborating"
                 width={800}
                 height={600}

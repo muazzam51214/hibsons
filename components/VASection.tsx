@@ -5,76 +5,68 @@ import { FiCheck } from 'react-icons/fi';
 const VAServices = () => {
   const vaRoles = [
     {
-      title: "Social Media VA",
+      title: "CRM Automation & AI Expert",
       services: [
-        "Content scheduling",
-        "Community management",
-        "Platform analytics",
-        "Ad campaign setup"
-      ]
+        "Automate workflows",
+        "Implement AI solutions"
+      ],
+      img : "/images/crm-automation-expert.jpg"
     },
     {
-      title: "Email Marketing VA",
+      title: "Media Buyer",
       services: [
-        "Newsletter creation",
-        "List segmentation",
-        "Automation setup",
-        "Performance tracking"
-      ]
+        "Maximize ad ROI",
+        "Manage ad budgets"
+      ],
+      img : "/images/media-buyer-img.jpg"
     },
     {
-      title: "SEO Specialist VA",
+      title: "SEO Specialist",
       services: [
-        "Keyword research",
-        "On-page optimization",
-        "Backlink outreach",
-        "Ranking reports"
-      ]
+        "Improve rankings & traffic",
+        "Optimize website performance"
+      ],
+      img : "/images/seo-specialist-img.jpg"
     },
     {
-      title: "Content Creation VA",
+      title: "Content & Graphic Associate",
       services: [
-        "Blog writing",
-        "Graphic design",
-        "Video editing",
-        "Content repurposing"
-      ]
+        "Create engaging content",
+        "Design impactful visuals"
+      ],
+      img : "/images/content-and-graphic-img.jpg"
     },
     {
-      title: "PPC Management VA",
+      title: "Executive Assistant",
       services: [
-        "Ad copy creation",
-        "Bid management",
-        "A/B testing",
-        "ROI analysis"
-      ]
+        "Manage schedules & priorities",
+        "Handle admin & communication tasks"
+      ],
+      img : "/images/executive-assistant-img.jpg"
     },
     {
-      title: "CRM Management VA",
+      title: "Account Manager",
       services: [
-        "Data entry",
-        "Workflow automation",
-        "Lead scoring",
-        "Reporting"
-      ]
+        "Maintain client satisfaction",
+        "Oversee project delivery"
+      ],
+      img : "/images/account-manager-img.jpg"
     },
     {
-      title: "Influencer Outreach VA",
+      title: "Sales Associate",
       services: [
-        "Research prospects",
-        "Initial contact",
-        "Relationship tracking",
-        "Campaign coordination"
-      ]
+        "Drive sales and close deals",
+        "Build client relationship"
+      ],
+      img : "/images/sales-associate-img.jpg"
     },
     {
-      title: "Analytics VA",
+      title: "Marketing Associate",
       services: [
-        "Dashboard setup",
-        "Data visualization",
-        "Performance reports",
-        "Insight generation"
-      ]
+        "Run campaigns & track performance",
+        "Analyze data for better strategies"
+      ],
+      img : "/images/marketing-associate-img.jpg"
     }
   ];
 
@@ -98,7 +90,7 @@ const VAServices = () => {
             <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
               <div className="relative h-40 mb-4 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/va-img.jpg"
+                  src={role.img}
                   alt={role.title}
                   fill
                   className="object-cover"

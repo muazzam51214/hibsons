@@ -13,7 +13,7 @@ const BlogSection = () => {
       date: "May 15, 2023",
       readTime: "5 min read",
       author: "Sarah Johnson",
-      image: "/images/va-img.jpg",
+      image: "/images/content-and-graphic-img.jpg"
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const BlogSection = () => {
       date: "April 28, 2023",
       readTime: "8 min read",
       author: "Michael Chen",
-      image: "/images/va-img.jpg",
+      image: "/images/content-and-graphic-img.jpg"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const BlogSection = () => {
       date: "April 10, 2023",
       readTime: "4 min read",
       author: "Emily Rodriguez",
-      image: "/images/va-img.jpg",
+      image: "/images/content-and-graphic-img.jpg"
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ const BlogSection = () => {
       date: "March 22, 2023",
       readTime: "6 min read",
       author: "David Wilson",
-      image: "/images/va-img.jpg",
+      image: "/images/content-and-graphic-img.jpg"
     },
   ];
 
