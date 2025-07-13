@@ -2,7 +2,7 @@ import EoRCoverage from "@/components/EoRCoverage";
 import EoRInfo from "@/components/EoRInfo";
 import PageTitle from "@/components/PageTitle";
 
-const Careers = () => {
+const EOR = () => {
   return (
     <div>
       <PageTitle
@@ -14,4 +14,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default EOR;

@@ -161,10 +161,10 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/about"
+                href="/blogs"
                 className="font-medium text-gray-700 hover:text-indigo-600 transition-colors"
               >
-                About Us
+                Blogs
               </Link>
             </nav>
 
@@ -273,11 +273,11 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/about"
+                href="/blogs"
                 className="block font-medium text-gray-700 py-2 border-t border-gray-200 pt-4"
                 onClick={closeAll}
               >
-                About Us
+                Blogs
               </Link>
 
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">

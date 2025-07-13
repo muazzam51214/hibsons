@@ -1,7 +1,7 @@
 import DiscoveryCallBooking from "@/components/DiscoveryCallBooking";
 import PageTitle from "@/components/PageTitle";
 
-const Careers = () => {
+const GetStarted = () => {
   return (
     <div>
       <PageTitle
@@ -12,4 +12,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default GetStarted;
