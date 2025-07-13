@@ -101,21 +101,49 @@ const Navbar = () => {
                 {openDropdown === "solutions" && (
                   <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                     <Link
-                      href="/"
+                      href="/roles/executive-assistant"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
                       onClick={closeAll}
                     >
                       Executive Assistant
                     </Link>
                     <Link
-                      href="/"
+                      href="/roles/crm-automation-ai-expert"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      CRM Automation & AI Expert
+                    </Link>
+                    <Link
+                      href="/roles/media-buyer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      Media Buyer
+                    </Link>
+                    <Link
+                      href="/roles/seo-specialist"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      SEO Specialist
+                    </Link>
+                    <Link
+                      href="/roles/content-graphic-associate"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      Content & Graphic Associate
+                    </Link>
+                    <Link
+                      href="/roles/account-manager"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
                       onClick={closeAll}
                     >
                       Account Manager
                     </Link>
                     <Link
-                      href="/solutions/agencies"
+                      href="/roles/sales-development-rep"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
                       onClick={closeAll}
                     >
@@ -184,21 +212,49 @@ const Navbar = () => {
                 {openDropdown === "mobile-solutions" && (
                   <div className="pl-4 space-y-2 mt-2">
                     <Link
-                      href="/"
+                      href="/roles/executive-assistant"
                       className="block py-2 text-gray-600 hover:text-indigo-600"
                       onClick={closeAll}
                     >
                       Executive Assistant
                     </Link>
                     <Link
-                      href="/"
+                      href="/roles/crm-automation-ai-expert"
+                      className="block py-2 text-gray-600 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      CRM Automation & AI Expert
+                    </Link>
+                    <Link
+                      href="/roles/media-buyer"
+                      className="block py-2 text-gray-600 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      Media Buyer
+                    </Link>
+                    <Link
+                      href="/roles/seo-specialist"
+                      className="block py-2 text-gray-600 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      SEO Specialist
+                    </Link>
+                    <Link
+                      href="/roles/content-graphic-associate"
+                      className="block py-2 text-gray-600 hover:text-indigo-600"
+                      onClick={closeAll}
+                    >
+                      Content & Graphic Associate
+                    </Link>
+                    <Link
+                      href="/roles/account-manager"
                       className="block py-2 text-gray-600 hover:text-indigo-600"
                       onClick={closeAll}
                     >
                       Account Manager
                     </Link>
                     <Link
-                      href="/"
+                      href="/roles/sales-development-rep"
                       className="block py-2 text-gray-600 hover:text-indigo-600"
                       onClick={closeAll}
                     >
