@@ -1,11 +1,19 @@
-import React from 'react'
+import CurrentOpenings from "@/components/CurrentOpenings";
+import PageTitle from "@/components/PageTitle";
+import StaffinProcess from "@/components/StaffinProcess";
+import TalentBenifits from "@/components/TalentBenifits";
 
-const Career = () => {
+const Careers = () => {
   return (
     <div>
-      Career Page
+      <PageTitle
+        title="Careers"
+      />
+      <TalentBenifits />
+      <StaffinProcess />
+      <CurrentOpenings />
     </div>
-  )
-}
+  );
+};
 
-export default Career
+export default Careers;
