@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import slugify from "slugify";
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -70,6 +70,7 @@ export async function PUT(
     job.department = body.department;
     job.type = body.type;
     job.experience = body.experience;
+    job.status = body.status;
 
     if (Array.isArray(body.questions)) {
       job.questions = body.questions

@@ -13,7 +13,7 @@ export async function GET() {
   }
 
   const totalJobs = await Job.countDocuments({});
-  const activeJobs = await Job.countDocuments({ status: "active" });
+  const activeJobs = await Job.countDocuments({ status: "open" });
   const newLeads = await Lead.countDocuments({ status: "new" });
   const totalApplicants = await Applicant.countDocuments({});
 

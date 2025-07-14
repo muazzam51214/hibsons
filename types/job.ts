@@ -24,6 +24,7 @@ export interface JobData {
   location: string;
   department: string;
   type: string;
+  status : string;
   experience: string;
   questions: Question[];
 }
