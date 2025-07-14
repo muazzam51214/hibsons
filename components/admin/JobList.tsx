@@ -2,6 +2,7 @@
 import { FiEdit2, FiTrash2, FiEye, FiClock, FiBriefcase } from "react-icons/fi";
 import { format } from "date-fns";
 import { Job } from "@/types/job";
+import Link from "next/link";
 
 const statusStyles = {
   open: "bg-green-50 text-green-700 border-green-200",
@@ -14,8 +15,14 @@ const typeStyles = {
   Contract: "bg-orange-50 text-orange-700",
 };
 
-export default function JobList({ jobs }: { jobs: Job[] }) {
-    if (!jobs.length) {
+export default function JobList({
+  jobs,
+  onDelete,
+}: {
+  jobs: Job[];
+  onDelete: (id: string) => void;
+}) {
+  if (!jobs.length) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 p-8 text-center text-gray-500">
         No jobs posted yet.
@@ -44,7 +51,10 @@ export default function JobList({ jobs }: { jobs: Job[] }) {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {jobs.map((job) => (
-              <tr key={job._id} className="hover:bg-indigo-50/50 transition-colors">
+              <tr
+                key={job._id}
+                className="hover:bg-indigo-50/50 transition-colors"
+              >
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600">
@@ -62,7 +72,11 @@ export default function JobList({ jobs }: { jobs: Job[] }) {
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex flex-wrap gap-2">
-                    <span className={`px-2 py-1 text-xs rounded-md ${typeStyles[job.type as keyof typeof typeStyles]}`}>
+                    <span
+                      className={`px-2 py-1 text-xs rounded-md ${
+                        typeStyles[job.type as keyof typeof typeStyles]
+                      }`}
+                    >
                       {job.type}
                     </span>
                     <span className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-md">
@@ -75,7 +89,11 @@ export default function JobList({ jobs }: { jobs: Job[] }) {
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border ${statusStyles[job.status as keyof typeof statusStyles]}`}>
+                  <span
+                    className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border ${
+                      statusStyles[job.status as keyof typeof statusStyles]
+                    }`}
+                  >
                     {job.status === "open" ? "Active" : "Closed"}
                   </span>
                 </td>
@@ -87,14 +105,16 @@ export default function JobList({ jobs }: { jobs: Job[] }) {
                     >
                       <FiEye className="h-5 w-5" />
                     </button>
-                    <button
-                      className="p-2 text-blue-600 hover:text-blue-900 hover:bg-blue-100 rounded-lg transition-colors"
+                    <Link 
+                      href={`/admin/jobs/${job._id}/edit`}
+                      className="p-2 text-blue-600 hover:text-blue-900 hover:bg-blue-100 rounded-lg transition-colors cursor-pointer"
                       title="Edit"
                     >
                       <FiEdit2 className="h-5 w-5" />
-                    </button>
+                    </Link>
                     <button
-                      className="p-2 text-red-600 hover:text-red-900 hover:bg-red-100 rounded-lg transition-colors"
+                      onClick={() => onDelete(job._id)}
+                      className="p-2 text-red-600 hover:text-red-900 hover:bg-red-100 rounded-lg transition-colors cursor-pointer"
                       title="Delete"
                     >
                       <FiTrash2 className="h-5 w-5" />

@@ -7,9 +7,11 @@ import api from "@/libs/axios";
 import toast from "react-hot-toast";
 import { Job } from "@/types/job";
 
+
 export default function JobsPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -25,6 +27,21 @@ export default function JobsPage() {
 
     fetchJobs();
   }, []);
+
+  const handleDelete = async (jobId: string) => {
+    const confirm = window.confirm("Are you sure you want to delete this job?");
+    if (!confirm) return;
+
+    try {
+      await api.delete(`/api/jobs/${jobId}`);
+      toast.success("Job deleted successfully");
+      setJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
+    } catch (err) {
+      toast.error("Failed to delete job");
+      console.error(err);
+    }
+  };
+  
 
   if (loading) {
     return <JobsSkeleton />;
@@ -42,7 +59,7 @@ export default function JobsPage() {
         </Link>
       </div>
 
-      <JobList jobs={jobs} />
+      <JobList jobs={jobs} onDelete={handleDelete} />
     </div>
   );
 }
