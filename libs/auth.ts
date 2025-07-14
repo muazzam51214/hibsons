@@ -70,11 +70,11 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    error: "/logoin",
+    error: "/login",
   },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
-  secret: process.env.NEXT_AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 };

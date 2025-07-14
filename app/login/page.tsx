@@ -1,7 +1,6 @@
 import LoginSection from "@/components/LoginSection";
-import PageTitle from "@/components/PageTitle";
 
-const Blogs = () => {
+const LoginPage = () => {
   return (
     <div>
       <LoginSection />
@@ -9,4 +8,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default LoginPage;

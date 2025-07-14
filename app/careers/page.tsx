@@ -1,4 +1,3 @@
-
 import CurrentOpenings from "@/components/CurrentOpenings";
 import PageTitle from "@/components/PageTitle";
 import StaffinProcess from "@/components/StaffinProcess";
@@ -13,6 +12,7 @@ const Careers = () => {
       <TalentBenifits />
       <StaffinProcess />
       <CurrentOpenings />
+      
     </div>
   );
 };
