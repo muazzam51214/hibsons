@@ -11,7 +11,7 @@ export interface Job {
 }
 
 
-export type QuestionType = "text" | "textarea" | "select" | "radio";
+export type QuestionType = "text" | "textarea" | "select" | "radio" | "checkbox";
 export interface Question {
   text: string;
   type: QuestionType;
@@ -23,7 +23,6 @@ export interface JobData {
   location: string;
   department: string;
   type: string;
-  status: "open" | "closed";
   experience: string;
   questions: Question[];
 }

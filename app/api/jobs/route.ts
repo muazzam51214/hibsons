@@ -96,6 +96,8 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
+    console.error(error);
+  
     return NextResponse.json(
       { error: "Error in creating job!" },
       { status: 500 }

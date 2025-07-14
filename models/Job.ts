@@ -2,7 +2,7 @@ import mongoose, { Schema, model, models } from "mongoose";
 
 export interface IQuestion {
   text: string;
-  type: "text" | "textarea" | "select" | "radio";
+  type: "text" | "textarea" | "select" | "radio" | "checkbox";
   options?: string[];
 }
 
@@ -22,12 +22,12 @@ export interface IJob {
   updatedAt?: Date;
 }
 
-const questionSchema = new Schema(
+const questionSchema = new Schema<IQuestion>(
   {
     text: { type: String, required: true },
     type: {
       type: String,
-      enum: ["text", "textarea", "select", "radio"],
+      enum: ["text", "textarea", "select", "radio", "checkbox"],
       required: true,
     },
     options: [String],

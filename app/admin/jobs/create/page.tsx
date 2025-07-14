@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
-import { FiPlus, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiPlus, FiX, FiChevronUp } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import type { JobData, Question } from "@/types/job";
+import api from "@/libs/axios";
 
 export default function CreateJobForm() {
   const router = useRouter();
@@ -12,10 +14,10 @@ export default function CreateJobForm() {
     location: "",
     department: "",
     type: "",
-    status: "open",
     experience: "",
     questions: [],
   });
+  const [submitting, setSubmitting] = useState(false);
 
   const [newQuestion, setNewQuestion] = useState<Question>({
     text: "",
@@ -75,9 +77,19 @@ export default function CreateJobForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Connect to your API
-    console.log("Submitting job:", jobData);
-    // router.push("/admin/jobs");
+    setSubmitting(true);
+    try {
+      const res = await api.post("/api/jobs", jobData);
+      toast.success("Job posted successfully!");
+      router.push("/admin/jobs");
+    } catch (err) {
+      toast.error("Failed to post job");
+      console.log(err);
+      
+      
+    } finally {
+      setSubmitting(false); 
+    }
   };
 
   return (
@@ -272,10 +284,12 @@ export default function CreateJobForm() {
                   <option value="textarea">Long Answer</option>
                   <option value="select">Multiple Choice (Select)</option>
                   <option value="radio">Multiple Choice (Radio)</option>
+                  <option value="checkbox">Multiple Choice (Checkbox)</option>
                 </select>
               </div>
 
               {(newQuestion.type === "select" ||
+                newQuestion.type === "checkbox" ||
                 newQuestion.type === "radio") && (
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -333,12 +347,14 @@ export default function CreateJobForm() {
                   disabled={
                     !newQuestion.text ||
                     ((newQuestion.type === "select" ||
+                      newQuestion.type === "checkbox" ||
                       newQuestion.type === "radio") &&
                       newQuestion.options.length === 0)
                   }
                   className={`px-4 py-2 rounded-lg ${
                     !newQuestion.text ||
                     ((newQuestion.type === "select" ||
+                      newQuestion.type === "checkbox" ||
                       newQuestion.type === "radio") &&
                       newQuestion.options.length === 0)
                       ? "bg-gray-300 cursor-not-allowed"
@@ -396,12 +412,16 @@ export default function CreateJobForm() {
 
         {/* Form Actions */}
         <div className="flex justify-end space-x-4">
-          
           <button
             type="submit"
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            disabled={submitting}
+            className={`px-6 py-2 rounded-lg cursor-pointer text-white ${
+              submitting
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-indigo-600 hover:bg-indigo-700"
+            }`}
           >
-            + Create Job Posting
+            {submitting ? "Posting Job..." : "+ Create Job Posting"}
           </button>
         </div>
       </form>
