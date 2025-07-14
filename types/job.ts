@@ -1,6 +1,7 @@
 export interface Job {
   _id: string;
   title: string;
+  slug: string;
   status: "open" | "closed";
   department: string;
   type: "Full-time" | "Part-time" | "Contract";
