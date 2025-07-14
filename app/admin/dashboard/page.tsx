@@ -1,27 +1,20 @@
-"use client";
-import { useAuthStore } from "@/store/authStore";
-import { useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
+import StatsCard from "@/components/admin/StatsCard";
 
-const Dashboard = () => {
-  const router = useRouter();
-  const user = useAuthStore((state) => state.user);
-  const handleLogout = async () => {
-    useAuthStore.getState().clearUser();
-    await signOut({ redirect: false });
-    router.push("/");
-  };
-
+export default function DashboardPage() {
   return (
-    <div>
-      <h1>Welcome, {user?.name}</h1>
-      <p>Role: {user?.role}</p>
-      <p>Email: {user?.email}</p>
-      <p>ID: {user?.id}</p>
-
-      <button onClick={handleLogout}>Logout</button>
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">Dashboard Overview</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatsCard title="Total Users" value="1,240" icon="👥" />
+        <StatsCard title="Active Jobs" value="89" icon="💼" />
+        <StatsCard title="Revenue" value="$24K" icon="💰" />
+        <StatsCard title="Pending" value="12" icon="⏳" />
+        <StatsCard title="Total Users" value="1,240" icon="👥" />
+        <StatsCard title="Active Jobs" value="89" icon="💼" />
+        <StatsCard title="Revenue" value="$24K" icon="💰" />
+        <StatsCard title="Pending" value="12" icon="⏳" />
+      </div>
+      {/* Other dashboard content */}
     </div>
   );
-};
-
-export default Dashboard;
+}
