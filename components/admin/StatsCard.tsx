@@ -1,16 +1,14 @@
-// components/admin/StatsCard.tsx
-"use client";
+'use client';
 
-const StatsCard = ({
-  title,
-  value,
-  icon,
-}: {
+import { ReactNode } from 'react';
+
+interface StatsCardProps {
   title: string;
-  value: string;
-  icon: string;
-}) => {
+  value: number;
+  icon: ReactNode;        // ← accepts a React element, not a string
+}
 
+export default function StatsCard({ title, value, icon }: StatsCardProps) {
   return (
     <div className="bg-indigo-50 text-indigo-600 rounded-xl border border-gray-200 p-6">
       <div className="flex justify-between items-start">
@@ -18,10 +16,10 @@ const StatsCard = ({
           <p className="text-sm font-medium text-gray-500">{title}</p>
           <p className="text-3xl font-bold mt-1">{value}</p>
         </div>
-        <span className="text-2xl">{icon}</span>
+
+        {/* Icon element */}
+        <span className="text-3xl leading-none">{icon}</span>
       </div>
     </div>
   );
-};
-
-export default StatsCard;
+}
