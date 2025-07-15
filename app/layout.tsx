@@ -1,11 +1,12 @@
 import "./globals.css";
 import Layout from "@/components/Layout";
-import { Jost } from 'next/font/google';
+import Providers from "@/components/Providers";
+import { Jost } from "next/font/google";
 
 const jost = Jost({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jost.className} bg-white text-black`}>
-        <Layout>{children}</Layout>
+        <Providers>
+          {" "}
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );

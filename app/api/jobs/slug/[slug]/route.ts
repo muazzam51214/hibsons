@@ -1,4 +1,5 @@
 import { connectDB } from "@/libs/db";
+import Applicant from "@/models/Applicant";
 import Job from "@/models/Job";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -18,7 +19,9 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(singleJob);
+    const applicantsCount = await Applicant.countDocuments({ jobId: singleJob._id });
+    
+    return NextResponse.json({singleJob, applicantsCount});
   } catch (error) {
     return NextResponse.json(
       { error: "Error in fetching job!" },

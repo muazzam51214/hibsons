@@ -6,20 +6,21 @@ import {
   FiClock,
   FiUser,
   FiBriefcase,
+  FiCalendar,
 } from "react-icons/fi";
 import api from "@/libs/axios";
 import toast from "react-hot-toast";
-import { Job, JobData } from "@/types/job";
+import { JobDataNew } from "@/types/job";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
+import { format } from 'date-fns';
 
 const JobDetails = () => {
   const params = useParams();
   const jobSlug = params.slug as string;
 
-  const [jobData, setJobData] = useState<JobData>({
+  const [jobData, setJobData] = useState<JobDataNew>({
     title: "",
     description: "",
     location: "",
@@ -27,17 +28,19 @@ const JobDetails = () => {
     type: "",
     experience: "",
     status: "",
-    questions: [],
+    createdAt : new Date(),
   });
-  const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [applicantCount, setApplicantCount] = useState(0);
 
   // Fetch job data
   useEffect(() => {
     const fetchJob = async () => {
       try {
         const res = await api.get(`/api/jobs/slug/${jobSlug}`);
-        setJobData(res.data);
+        setJobData(res.data.singleJob);
+        setApplicantCount(res.data.applicantsCount);
+        
       } catch (err) {
         toast.error("Failed to load job data");
         console.error(err);
@@ -158,11 +161,11 @@ const JobDetails = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center text-gray-700">
                   <FiUser className="w-5 h-5 text-indigo-600 mr-3" />
-                  <span>24 applicants</span>
+                  <span>{applicantCount} applicants</span>
                 </div>
                 <div className="flex items-center text-gray-700">
-                  <FiClock className="w-5 h-5 text-indigo-600 mr-3" />
-                  <span>Posted 2 weeks ago</span>
+                  <FiCalendar className="w-5 h-5 text-indigo-600 mr-3" />
+                  <span>Posted on: {format(jobData.createdAt, 'dd MMM yyyy')}</span>
                 </div>
                 <div className="flex items-center text-gray-700">
                   <FiCheck className="w-5 h-5 text-indigo-600 mr-3" />

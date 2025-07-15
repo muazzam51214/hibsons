@@ -28,3 +28,13 @@ export interface JobData {
   experience: string;
   questions: Question[];
 }
+export interface JobDataNew {
+  title: string;
+  description: string;
+  location: string;
+  department: string;
+  type: string;
+  status : string;
+  experience: string;
+  createdAt: Date;
+}

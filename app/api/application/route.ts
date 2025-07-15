@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       dob: body.dob,
       linkedInUrl: body.linkedInUrl,
       resumeUrl: body.resumeUrl,
-      answers: [body.answers],
+      answers: body.answers,
     });
 
     return NextResponse.json(
