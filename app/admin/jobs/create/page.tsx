@@ -14,6 +14,7 @@ export default function CreateJobForm() {
     location: "",
     department: "",
     type: "",
+    status : "",
     experience: "",
     questions: [],
   });

@@ -74,7 +74,7 @@ const CurrentOpenings = () => {
                     </div>
                   </div>
                 </div>
-                <Link href={`/careers/${job.slug}/apply`} className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap cursor-pointer">
+                <Link href={`/careers/${job.slug}`} className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap cursor-pointer">
                   Apply Now
                 </Link>
               </div>

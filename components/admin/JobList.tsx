@@ -1,5 +1,5 @@
 "use client";
-import { FiEdit2, FiTrash2, FiEye, FiClock, FiBriefcase } from "react-icons/fi";
+import { FiEdit2, FiTrash2, FiClock, FiBriefcase, FiFile } from "react-icons/fi";
 import { format } from "date-fns";
 import { Job } from "@/types/job";
 import Link from "next/link";
@@ -99,12 +99,13 @@ export default function JobList({
                 </td>
                 <td className="px-6 py-4 text-right">
                   <div className="flex justify-end space-x-2">
-                    <button
+                    <Link
+                      href={`/admin/applicants/${job._id}`}
                       className="p-2 text-indigo-600 hover:text-indigo-900 hover:bg-indigo-100 rounded-lg transition-colors"
-                      title="View"
+                      title="Applicants"
                     >
-                      <FiEye className="h-5 w-5" />
-                    </button>
+                      <FiFile className="h-5 w-5" />
+                    </Link>
                     <Link 
                       href={`/admin/jobs/${job._id}/edit`}
                       className="p-2 text-blue-600 hover:text-blue-900 hover:bg-blue-100 rounded-lg transition-colors cursor-pointer"

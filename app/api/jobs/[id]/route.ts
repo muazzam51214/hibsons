@@ -7,11 +7,12 @@ import slugify from "slugify";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     await connectDB();
-    const singleJob = await Job.findById(params.id);
+    const singleJob = await Job.findById(id);
 
     if (!singleJob) {
       return NextResponse.json(
