@@ -32,8 +32,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
 
     const {
-      prefferedDate,
-      prefferedTime,
+      prefferedDateTime,
       companyName,
       contactPerson,
       email,
@@ -44,8 +43,7 @@ export async function POST(req: NextRequest) {
     } = await req.json();
 
     if (
-      !prefferedDate ||
-      !prefferedTime ||
+      !prefferedDateTime ||
       !companyName ||
       !contactPerson ||
       !email ||
@@ -58,8 +56,7 @@ export async function POST(req: NextRequest) {
     }
 
     const newLead = await Lead.create({
-      prefferedDate,
-      prefferedTime,
+      prefferedDateTime,
       companyName,
       contactPerson,
       email,

@@ -12,6 +12,7 @@ import {
   FiSettings,
   FiX,
 } from "react-icons/fi";
+import { BiCommentDots } from 'react-icons/bi';
 
 export default function AdminSidebar() {
   const { isOpen, close } = useSidebarStore();
@@ -19,8 +20,9 @@ export default function AdminSidebar() {
 
   const navItems = [
     { name: "Dashboard", icon: FiHome, href: "/admin/dashboard" },
-    { name: "Users", icon: FiUsers, href: "/admin/users" },
+    { name: "Leads", icon: BiCommentDots, href: "/admin/leads" },
     { name: "Jobs", icon: FiBriefcase, href: "/admin/jobs" },
+    { name: "Users", icon: FiUsers, href: "/admin/users" },
     { name: "Analytics", icon: FiPieChart, href: "/admin/analytics" },
     { name: "Settings", icon: FiSettings, href: "/admin/settings" },
   ];
@@ -71,7 +73,6 @@ export default function AdminSidebar() {
               </Link>
             ))}
           </nav>
-
           <div className="pt-4 border-t border-gray-200">
             <button
               onClick={logout}

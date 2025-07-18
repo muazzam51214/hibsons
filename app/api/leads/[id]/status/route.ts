@@ -6,9 +6,10 @@ import { authOptions } from "@/libs/auth";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -28,7 +29,7 @@ export async function PATCH(
     await connectDB();
 
     const updatedLead = await Lead.findByIdAndUpdate(
-      params.id,
+      id,
       { status },
       { new: true }
     );

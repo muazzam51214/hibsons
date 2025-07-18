@@ -2,8 +2,7 @@ import mongoose, { Schema, model, models } from "mongoose";
 
 export interface ILead {
   _id?: mongoose.Types.ObjectId;
-  prefferedDate: Date;
-  prefferedTime: Date;
+  prefferedDateTime: Date;
   companyName: string;
   contactPerson: string;
   email: string;
@@ -18,11 +17,7 @@ export interface ILead {
 
 const leadSchema = new Schema<ILead>(
   {
-    prefferedDate: {
-      type: Date,
-      required: true,
-    },
-    prefferedTime: {
+    prefferedDateTime: {
       type: Date,
       required: true,
     },
