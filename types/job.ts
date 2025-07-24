@@ -8,7 +8,7 @@ export interface Job {
   location: string;
   experience: string;
   description: string;
-  createdAt: string; // ISO string
+  createdAt: string;
 }
 
 

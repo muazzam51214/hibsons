@@ -4,8 +4,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
+) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session) {
       return NextResponse.json(
@@ -22,7 +26,7 @@ export async function GET({ params }: { params: { id: string } }) {
       );
     }
     await connectDB();
-    const allApplications = await Applicant.find({ jobId: params.id })
+    const allApplications = await Applicant.find({ jobId: id })
       .sort({ createdAt: -1 })
       .lean();
 
