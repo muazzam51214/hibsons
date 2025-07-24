@@ -5,15 +5,19 @@ import { authOptions } from "@/libs/auth";
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
+) {
   try {
+    const { id } = await ctx.params;
     await connectDB();
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
-    const lead = await Lead.findById(params.id);
+    const lead = await Lead.findById(id);
 
     if (!lead) {
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });
@@ -26,10 +30,11 @@ export async function GET({ params }: { params: { id: string } }) {
 }
 
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
 
     if (!session || session.user.role !== "admin") {
@@ -38,11 +43,11 @@ export async function DELETE(
 
     await connectDB();
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
-    const deleted = await Lead.findByIdAndDelete(params.id);
+    const deleted = await Lead.findByIdAndDelete(id);
 
     if (!deleted) {
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });

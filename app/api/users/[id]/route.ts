@@ -8,15 +8,16 @@ import mongoose from "mongoose";
 // PATCH — Update User
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session || session.user.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
     }
 
@@ -25,7 +26,7 @@ export async function PATCH(
     const updateData = await req.json();
 
     const updatedUser = await User.findByIdAndUpdate(
-      params.id,
+      id,
       { $set: updateData },
       { new: true }
     ).select("-password");
@@ -46,22 +47,23 @@ export async function PATCH(
 
 // DELETE — Remove User
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session || session.user.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
     }
 
     await connectDB();
 
-    const deleted = await User.findByIdAndDelete(params.id);
+    const deleted = await User.findByIdAndDelete(id);
 
     if (!deleted) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });

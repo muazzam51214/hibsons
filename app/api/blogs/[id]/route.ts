@@ -5,10 +5,14 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import slugify from "slugify";
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
+) {
   try {
+    const { id } = await ctx.params;
     await connectDB();
-    const singleBlog = await Blog.findById(params.id);
+    const singleBlog = await Blog.findById(id);
 
     if (!singleBlog) {
       return NextResponse.json(
@@ -28,9 +32,10 @@ export async function GET({ params }: { params: { id: string } }) {
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -43,7 +48,7 @@ export async function PUT(
 
     await connectDB();
     const body: IBlog = await request.json();
-    const blog = await Blog.findById(params.id);
+    const blog = await Blog.findById(id);
 
     if (!blog) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
@@ -67,7 +72,10 @@ export async function PUT(
 
     await blog.save();
 
-    return NextResponse.json({ message: "Blog updated", Blog }, { status: 200 });
+    return NextResponse.json(
+      { message: "Blog updated", Blog },
+      { status: 200 }
+    );
   } catch (err) {
     console.error("Blog Update Error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
@@ -76,9 +84,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await ctx.params;
     const session = await getServerSession(authOptions);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -91,7 +100,7 @@ export async function DELETE(
 
     await connectDB();
 
-    const blog = await Blog.findByIdAndDelete(params.id);
+    const blog = await Blog.findByIdAndDelete(id);
 
     if (!blog) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
