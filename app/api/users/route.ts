@@ -48,11 +48,11 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const { name, email, password, role, avatar } = await req.json();
 
-    if (!name || !email || !password || !role) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    if (!name || !email || !password || !role || !avatar) {
+      return NextResponse.json({ error: "Missing fields are required" }, { status: 400 });
     }
 
-    const allowedRoles = ["hr", "sales", "associate", "client"];
+    const allowedRoles = ["hr", "sales", "associate", "client", "admin"];
     if (!allowedRoles.includes(role)) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }

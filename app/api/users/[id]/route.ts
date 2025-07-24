@@ -5,6 +5,32 @@ import { authOptions } from "@/libs/auth";
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 
+// GET —  User
+export async function GET(
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await ctx.params;
+    await connectDB();
+    const singleUser = await User.findById(id);
+
+    if (!singleUser) {
+      return NextResponse.json(
+        { error: "User not found with this id!" },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(singleUser);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Error in fetching user!" },
+      { status: 500 }
+    );
+  }
+}
+
 // PATCH — Update User
 export async function PATCH(
   req: NextRequest,

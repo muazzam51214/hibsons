@@ -49,7 +49,9 @@ export default function LeadPage() {
   };
 
   const handleDelete = async (leadId: string) => {
-    const confirm = window.confirm("Are you sure you want to delete this lead?");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this lead?"
+    );
     if (!confirm) return;
     try {
       await api.delete(`/api/leads/${leadId}`);
@@ -60,22 +62,21 @@ export default function LeadPage() {
     }
   };
 
-  if (loading) {
-    return <LeadsSkeleton />;
-  }
-
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Lead Management</h1>
       </div>
-
-      <LeadList
-        leads={leads}
-        onDelete={handleDelete}
-        userRole="admin"
-        onStatusChange={handleStatusChange}
-      />
+      {loading ? (
+        <LeadsSkeleton />
+      ) : (
+        <LeadList
+          leads={leads}
+          onDelete={handleDelete}
+          userRole="admin"
+          onStatusChange={handleStatusChange}
+        />
+      )}
     </div>
   );
 }
