@@ -21,8 +21,10 @@ export default function ApplicantPage() {
       const res = await api.get<IApplicant[]>(
         `/api/jobs/${jobId}/applications`
       );
-      const resQuestion = await api.get<Question[]>(`/api/jobs/${jobId}/questions`);
-      
+      const resQuestion = await api.get<Question[]>(
+        `/api/jobs/${jobId}/questions`
+      );
+
       setApplicants(res.data);
       setQuestions(resQuestion.data);
     } catch (error) {
@@ -37,6 +39,40 @@ export default function ApplicantPage() {
     fetchApplicants();
   }, []);
 
+  const handleStatusChange = async (applicantId: string, newStatus: string) => {
+    try {
+      setApplicants((prevApplicant) =>
+        prevApplicant.map((app) =>
+          app._id?.toString() === applicantId
+            ? { ...app, status: newStatus }
+            : app
+        )
+      );
+
+      await api.patch(`/api/application/${applicantId}/status`, {
+        status: newStatus,
+      });
+      await fetchApplicants();
+    } catch (error) {
+      toast.error("Failed to update status");
+      await fetchApplicants();
+    }
+  };
+
+  const handleDelete = async (applicantId: string) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this applicant?"
+    );
+    if (!confirm) return;
+    try {
+      await api.delete(`/api/application/${applicantId}`);
+      toast.success("Applicant deleted successfully");
+      await fetchApplicants();
+    } catch (error) {
+      toast.error("Failed to delete applicant");
+    }
+  };
+
   if (loading) {
     return <ApplicantSkeleton />;
   }
@@ -47,9 +83,11 @@ export default function ApplicantPage() {
         <h1 className="text-2xl font-bold">Application Management</h1>
       </div>
 
-      <ApplicantList 
-      applicants={applicants} 
-      questions={questions} 
+      <ApplicantList
+        applicants={applicants}
+        questions={questions}
+        onDelete={handleDelete}
+        onStatusChange={handleStatusChange}
       />
     </div>
   );

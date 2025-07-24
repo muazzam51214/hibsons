@@ -49,7 +49,8 @@ export default function LeadSkeleton({ count = 3 }: { count?: number }) {
                   <div className="h-6 bg-gray-100 border rounded-full w-full"></div>
                 </td>
                 <td className="px-3 py-3 text-right">
-                  <div className="h-4 w-4 bg-gray-300 rounded mx-auto"></div>
+                  <div className="h-5 w-10 bg-gray-300 rounded mx-auto"></div>
+
                 </td>
               </tr>
             ))}

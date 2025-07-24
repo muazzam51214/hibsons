@@ -26,7 +26,7 @@ export default function ApplicantSkeleton() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {[...Array(5)].map((_, i) => (
+            {[...Array(3)].map((_, i) => (
               <tr key={i} className="hover:bg-indigo-50/50 transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center">

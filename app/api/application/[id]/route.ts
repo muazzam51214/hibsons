@@ -44,3 +44,40 @@ export async function GET(
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
+
+export async function DELETE(
+  request: NextRequest,
+  ctx: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await ctx.params;
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const allowedRoles = ["admin", "hr"];
+    if (!allowedRoles.includes(session.user.role)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    await connectDB();
+
+    const blog = await Applicant.findByIdAndDelete(id);
+
+    if (!blog) {
+      return NextResponse.json(
+        { error: "Applicant not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Applicant deleted successfully" },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.error("Applicant Delete Error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  }
+}
