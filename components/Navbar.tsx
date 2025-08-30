@@ -6,7 +6,6 @@ import {
   FiChevronDown,
   FiPhone,
   FiMail,
-  FiClock,
 } from "react-icons/fi";
 
 const Topbar = () => {

@@ -101,7 +101,7 @@ export default function EditJobForm() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await api.put(`/api/jobs/${jobId}`, jobData);
+      await api.put(`/api/jobs/${jobId}`, jobData);
       toast.success("Job updated successfully!");
       router.push("/admin/jobs");
     } catch (err) {
@@ -331,7 +331,7 @@ export default function EditJobForm() {
                   onChange={(e) =>
                     setNewQuestion({
                       ...newQuestion,
-                      type: e.target.value as any,
+                      type: e.target.value as Question["type"],
                       options:
                         e.target.value === "text" ||
                         e.target.value === "textarea"

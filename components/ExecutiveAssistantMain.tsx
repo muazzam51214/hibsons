@@ -69,7 +69,7 @@ const ExecutiveAssistantMain = () => {
               Buy Back Your Time
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              They'll handle your scheduling, email management, and
+              They&apos;ll handle your scheduling, email management, and
               administrative tasks, letting you focus on vision and growth. We
               ensure perfect matches and provide ongoing training to keep skills
               sharp.

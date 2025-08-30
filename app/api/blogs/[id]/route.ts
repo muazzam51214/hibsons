@@ -22,7 +22,7 @@ export async function GET(
     }
 
     return NextResponse.json(singleBlog);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching Blog!" },
       { status: 500 }

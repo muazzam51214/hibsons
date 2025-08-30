@@ -18,7 +18,7 @@ const CustomerReviews = () => {
       role: "CEO, DigitalGrowth Agency",
       rating: 5,
       date: "1 month ago",
-      content: "Our SEO VA from Hibsons has helped us double our organic traffic in just 4 months. The vetting process really shows - we've never worked with such knowledgeable professionals.",
+      content: "Our SEO VA from Hibsons has helped us double our organic traffic in just 4 months. The vetting process really shows - we&apos;ve never worked with such knowledgeable professionals.",
       avatar: "/images/male.png"
     },
     {
@@ -27,7 +27,7 @@ const CustomerReviews = () => {
       role: "Founder, Boutique Marketing Co.",
       rating: 4,
       date: "3 months ago",
-      content: "The PPC management VA we hired has cut our customer acquisition costs by 35% while maintaining conversion rates. We're expanding our team with two more Hibsons VAs this quarter.",
+      content: "The PPC management VA we hired has cut our customer acquisition costs by 35% while maintaining conversion rates. We&apos;re expanding our team with two more Hibsons VAs this quarter.",
       avatar: "/images/female.png"
     },
     {
@@ -52,7 +52,7 @@ const CustomerReviews = () => {
             What Our Customers Say
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it - hear from marketing agencies who've transformed their operations with our VAs.
+            Don&apos;t just take our word for it - hear from marketing agencies who&apos;ve transformed their operations with our VAs.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ const CustomerReviews = () => {
                 <span className="text-sm text-gray-500 ml-2">{review.date}</span>
               </div>
               
-              <p className="text-gray-700 mb-4">"{review.content}"</p>
+              <p className="text-gray-700 mb-4">&quot;{review.content}&quot;</p>
               
               <div className="flex items-center text-sm">
                 <Image 

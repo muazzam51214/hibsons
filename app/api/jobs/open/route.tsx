@@ -1,5 +1,5 @@
 import { connectDB } from "@/libs/db";
-import Job, { IJob } from "@/models/Job";
+import Job from "@/models/Job";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -12,7 +12,7 @@ export async function GET() {
     }
 
     return NextResponse.json(allJobs);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching jobs!" },
       { status: 500 }

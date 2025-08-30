@@ -1,10 +1,9 @@
 "use client";
 import api from "@/libs/axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { BiBuilding, BiGlobe } from "react-icons/bi";
 import {
-  FiCalendar,
   FiClock,
   FiUser,
   FiMail,
@@ -103,15 +102,19 @@ const DiscoveryCallBooking = () => {
     setAvailableSlots({ ...availableSlots, [dateStr]: available });
   };
 
-  const combineDateAndTime = (date: Date, time: string): string => {
-    const [t, meridiem] = time.split(" ");
-    let [h, m] = t.split(":").map(Number);
-    if (meridiem === "PM" && h < 12) h += 12;
-    if (meridiem === "AM" && h === 12) h = 0;
-    const dt = new Date(date);
-    dt.setHours(h, m, 0, 0);
-    return dt.toISOString();
-  };
+const combineDateAndTime = (date: Date, time: string): string => {
+  const [t, meridiem] = time.split(" ");
+  const [hour, minute] = t.split(":").map(Number);
+  let h = hour;
+  const m = minute;
+
+  if (meridiem === "PM" && h < 12) h += 12;
+  if (meridiem === "AM" && h === 12) h = 0;
+
+  const dt = new Date(date);
+  dt.setHours(h, m, 0, 0);
+  return dt.toISOString();
+};
 
   // Handle date selection
   const handleDateSelect = (date: Date) => {
@@ -163,7 +166,7 @@ const DiscoveryCallBooking = () => {
     };
 
     try {
-      const res = await api.post("/api/leads", payload);
+      await api.post("/api/leads", payload);
       toast.success("Your discovery call has been booked!");
     } catch (error) {
       console.error("Error submitting request:", error);
@@ -199,7 +202,7 @@ const DiscoveryCallBooking = () => {
               </h3>
               <p className="text-gray-700 mb-6">
                 Book a call now for your 100% FREE no-strings-attached
-                recruitment strategy session and as a thank you we'll send you:
+                recruitment strategy session and as a thank you we&apos;ll send you:
               </p>
 
               <ul className="space-y-4 mb-8">

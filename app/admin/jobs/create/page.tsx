@@ -69,18 +69,19 @@ export default function CreateJobForm() {
     updatedQuestions.splice(index, 1);
     setJobData({ ...jobData, questions: updatedQuestions });
   };
+  
 
-  const removeOption = (questionIndex: number, optionIndex: number) => {
-    const updatedQuestions = [...jobData.questions];
-    updatedQuestions[questionIndex].options?.splice(optionIndex, 1);
-    setJobData({ ...jobData, questions: updatedQuestions });
-  };
+  // const removeOption = (questionIndex: number, optionIndex: number) => {
+  //   const updatedQuestions = [...jobData.questions];
+  //   updatedQuestions[questionIndex].options?.splice(optionIndex, 1);
+  //   setJobData({ ...jobData, questions: updatedQuestions });
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await api.post("/api/jobs", jobData);
+      await api.post("/api/jobs", jobData);
       toast.success("Job posted successfully!");
       router.push("/admin/jobs");
     } catch (err) {
@@ -271,7 +272,7 @@ export default function CreateJobForm() {
                   onChange={(e) =>
                     setNewQuestion({
                       ...newQuestion,
-                      type: e.target.value as any,
+                      type: e.target.value as Question["type"],
                       options:
                         e.target.value === "text" ||
                         e.target.value === "textarea"

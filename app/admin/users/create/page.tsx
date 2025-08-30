@@ -31,7 +31,7 @@ export default function CreateUser() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await api.post("/api/users", userData);
+      await api.post("/api/users", userData);
       toast.success("User created successfully!");
       router.push("/admin/users");
     } catch (err) {

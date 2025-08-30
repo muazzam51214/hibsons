@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
               Why <span className="text-indigo-600">Choose Hibsons</span> for Your Digital Staffing Needs
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              We've redefined digital staffing to give you access to exceptional talent with 
+              We&apos;ve redefined digital staffing to give you access to exceptional talent with 
               none of the traditional hiring headaches.
             </p>
 
@@ -61,7 +61,7 @@ const WhyChooseUs = () => {
                 <FiTrendingUp className="w-6 h-6 text-indigo-600 flex-shrink-0" />
                 <div className="ml-4">
                   <p className="font-medium text-gray-900">
-                    "Hibsons clients see 2.5x faster team scaling with 30% lower turnover rates."
+                    &quot;Hibsons clients see 2.5x faster team scaling with 30% lower turnover rates&quot;
                   </p>
                 </div>
               </div>

@@ -41,7 +41,7 @@ export default function LeadPage() {
 
       // Refresh data to ensure consistency
       await fetchLeads();
-    } catch (error) {
+    } catch{
       toast.error("Failed to update status");
       // Revert if API call fails
       await fetchLeads();
@@ -57,7 +57,7 @@ export default function LeadPage() {
       await api.delete(`/api/leads/${leadId}`);
       toast.success("Lead deleted successfully");
       await fetchLeads();
-    } catch (error) {
+    } catch{
       toast.error("Failed to delete lead");
     }
   };

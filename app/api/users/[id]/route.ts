@@ -23,7 +23,7 @@ export async function GET(
     }
 
     return NextResponse.json(singleUser);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching user!" },
       { status: 500 }

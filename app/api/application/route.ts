@@ -33,7 +33,7 @@ export async function GET() {
     return NextResponse.json(allApplications);
   } catch (error) {
     return NextResponse.json(
-      { error: "Error in fetching Applications!" },
+      { error: `Error in fetching Applications: ${error}` },
       { status: 500 }
     );
   }

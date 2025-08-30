@@ -39,7 +39,7 @@ export default function UsersPage() {
       await api.delete(`/api/users/${userId}`);
       toast.success("User deleted successfully");
       await fetchUsers();
-    } catch (error) {
+    } catch{
       toast.error("Failed to delete user");
     }
   };

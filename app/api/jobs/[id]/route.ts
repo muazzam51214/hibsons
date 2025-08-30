@@ -22,7 +22,7 @@ export async function GET(
     }
 
     return NextResponse.json(singleJob);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching job!" },
       { status: 500 }

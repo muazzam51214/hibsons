@@ -1,11 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FiFile } from "react-icons/fi";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import api from "@/libs/axios";
-import { UserInterface, UserUpdateInterface } from "@/types/user";
-import FileUpload from "@/components/FileUpload";
+import { UserUpdateInterface } from "@/types/user";
 
 export default function CreateUser() {
   const router = useRouter();
@@ -50,7 +48,7 @@ export default function CreateUser() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await api.patch(`/api/users/${userId}`, userData);
+      await api.patch(`/api/users/${userId}`, userData);
       toast.success("User updated successfully!");
       router.push("/admin/users");
     } catch (err) {

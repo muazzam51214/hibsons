@@ -1,5 +1,5 @@
 import { connectDB } from "@/libs/db";
-import Applicant, { IApplicant } from "@/models/Applicant";
+import Applicant from "@/models/Applicant";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/auth";

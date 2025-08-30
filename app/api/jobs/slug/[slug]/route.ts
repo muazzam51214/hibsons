@@ -22,7 +22,7 @@ export async function GET(
     const applicantsCount = await Applicant.countDocuments({ jobId: singleJob._id });
     
     return NextResponse.json({singleJob, applicantsCount});
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching job!" },
       { status: 500 }

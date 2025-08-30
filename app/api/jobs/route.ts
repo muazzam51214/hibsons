@@ -15,7 +15,7 @@ export async function GET() {
     }
 
     return NextResponse.json(allJobs);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching jobs!" },
       { status: 500 }

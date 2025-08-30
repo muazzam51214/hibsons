@@ -50,7 +50,7 @@ export default function ApplicantList({
     try {
       await onStatusChange(applicantId, newStatus);
       toast.success("Status updated successfully");
-    } catch (error) {
+    } catch{
       toast.error("Failed to update status");
     }
   };

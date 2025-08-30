@@ -15,7 +15,7 @@ export async function GET() {
     }
 
     return NextResponse.json(allBlogs);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching Blogs!" },
       { status: 500 }
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       { message: "New Blog Posted", blog: newBlog },
       { status: 201 }
     );
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in creating Blog!" },
       { status: 500 }

@@ -41,7 +41,7 @@ export default function LeadList({
     try {
       await onStatusChange(leadId, newStatus);
       toast.success("Status updated successfully");
-    } catch (error) {
+    } catch{
       toast.error("Failed to update status");
     }
   };

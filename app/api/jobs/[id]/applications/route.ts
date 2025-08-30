@@ -1,5 +1,5 @@
 import { connectDB } from "@/libs/db";
-import Applicant, { IApplicant } from "@/models/Applicant";
+import Applicant from "@/models/Applicant";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -35,7 +35,7 @@ export async function GET(
     }
 
     return NextResponse.json(allApplications);
-  } catch (error) {
+  } catch{
     return NextResponse.json(
       { error: "Error in fetching Applications!" },
       { status: 500 }

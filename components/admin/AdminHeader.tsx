@@ -1,6 +1,6 @@
 "use client";
 
-import { FiMenu, FiSearch, FiBell } from "react-icons/fi";
+import { FiMenu, FiBell } from "react-icons/fi";
 import { useSidebarStore } from "@/store/sidebarStore";
 
 export default function AdminHeader() {

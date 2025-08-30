@@ -6,7 +6,6 @@ import { IApplicant } from "@/models/Applicant";
 import ApplicantList from "@/components/admin/ApplicantList";
 import ApplicantSkeleton from "@/components/admin/ApplicantSkeleton";
 import { useParams } from "next/navigation";
-import { IJob } from "@/models/Job";
 import { Question } from "@/types/job";
 
 export default function ApplicantPage() {
@@ -53,7 +52,7 @@ export default function ApplicantPage() {
         status: newStatus,
       });
       await fetchApplicants();
-    } catch (error) {
+    } catch{
       toast.error("Failed to update status");
       await fetchApplicants();
     }
@@ -68,7 +67,7 @@ export default function ApplicantPage() {
       await api.delete(`/api/application/${applicantId}`);
       toast.success("Applicant deleted successfully");
       await fetchApplicants();
-    } catch (error) {
+    } catch{
       toast.error("Failed to delete applicant");
     }
   };

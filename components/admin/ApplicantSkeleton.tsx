@@ -1,5 +1,5 @@
 "use client";
-import { FiUser, FiMail, FiPhone, FiMapPin, FiBook, FiCalendar, FiLinkedin, FiFileText } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
 
 export default function ApplicantSkeleton() {
   return (

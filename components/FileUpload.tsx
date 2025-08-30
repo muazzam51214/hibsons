@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 interface FileUploadProps {
-  onSuccess: (res: any) => void;
+  onSuccess: (res: unknown) => void;
   onProgress?: (progress: number) => void;
   fileType?: "pdf" | "image";
 }

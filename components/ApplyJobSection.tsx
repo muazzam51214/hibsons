@@ -81,12 +81,6 @@ const ApplyJobSection = () => {
     setFormData((prev) => ({ ...prev, answers: newAnswers }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFormData((prev) => ({ ...prev, resume: e.target.files![0] }));
-    }
-  };
-
   const handleCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     questionIndex: number,
@@ -129,7 +123,7 @@ const ApplyJobSection = () => {
         jobId: newJobId.toString(),
       };
 
-      const res = await api.post("/api/application", applicationData);
+      await api.post("/api/application", applicationData);
       toast.success("Application Submitted Successfully");
       router.push("/careers");
     } catch (error) {

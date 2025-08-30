@@ -40,8 +40,8 @@ const AboutUsSection = () => {
             </p>
 
             <p className="text-[16px] text-gray-600 mb-6">
-              We don’t just fill roles—we build high-performance remote teams
-              that integrate seamlessly into your operations. Whether you're a
+              We don&apos;t just fill roles—we build high-performance remote teams
+              that integrate seamlessly into your operations. Whether you&apos;re a
               startup or an established enterprise, Hibsons is your trusted
               partner in driving growth through smart, scalable staffing.
             </p>

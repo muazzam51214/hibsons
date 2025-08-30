@@ -1,5 +1,5 @@
 "use client";
-import { FiTrash2, FiFile, FiEdit2 } from "react-icons/fi";
+import { FiTrash2, FiEdit2 } from "react-icons/fi";
 import { format } from "date-fns";
 import Link from "next/link";
 import { UserNew } from "@/types/user";

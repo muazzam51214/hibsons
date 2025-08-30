@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FiArrowRight } from 'react-icons/fi';
 
 const CTASection = () => {
@@ -13,20 +14,20 @@ const CTASection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
+            <Link
               href="/get-started"
               className="px-8 py-4 bg-white text-indigo-600 font-bold rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl flex items-center justify-center"
             >
               Book a Free Strategy Call
               <FiArrowRight className="ml-2" />
-            </a>
+            </Link>
             
-            <a
+            <Link
               href="/careers"
               className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-indigo-600 transition-all flex items-center justify-center"
             >
               View Careers
-            </a>
+            </Link>
           </div>
           
           <div className="mt-8 flex flex-wrap justify-center items-center gap-4 text-blue-100 text-sm">

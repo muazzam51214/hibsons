@@ -24,7 +24,7 @@ export async function GET(
     }
 
     return NextResponse.json(lead, { status: 200 });
-  } catch (err) {
+  } catch{
     return NextResponse.json({ error: "Error fetching lead" }, { status: 500 });
   }
 }
@@ -54,7 +54,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ message: "Lead deleted" }, { status: 200 });
-  } catch (err) {
+  } catch{
     return NextResponse.json({ error: "Error deleting lead" }, { status: 500 });
   }
 }
