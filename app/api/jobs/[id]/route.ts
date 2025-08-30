@@ -22,7 +22,7 @@ export async function GET(
     }
 
     return NextResponse.json(singleJob);
-  } catch{
+  } catch {
     return NextResponse.json(
       { error: "Error in fetching job!" },
       { status: 500 }
@@ -32,8 +32,9 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await ctx.params;
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
@@ -47,7 +48,7 @@ export async function PUT(
 
     await connectDB();
     const body: IJob = await request.json();
-    const job = await Job.findById(params.id);
+    const job = await Job.findById(id);
 
     if (!job) {
       return NextResponse.json({ error: "Job not found" }, { status: 404 });
