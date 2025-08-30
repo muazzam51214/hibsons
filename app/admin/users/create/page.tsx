@@ -148,7 +148,7 @@ export default function CreateUser() {
                   onSuccess={(uploadResponse) => {
                     setUserData((prev) => ({
                       ...prev,
-                      avatar: uploadResponse.url,
+                      avatar: uploadResponse.url, 
                     }));
                   }}
                   onProgress={(progress) => {
@@ -158,7 +158,6 @@ export default function CreateUser() {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Form Actions */}

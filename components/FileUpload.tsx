@@ -5,9 +5,10 @@ import {
 } from "@imagekit/next";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import type { UploadResponse as IKUploadResponse } from "@imagekit/javascript/dist/interfaces/UploadResponse";
 
 interface FileUploadProps {
-  onSuccess: (res: unknown) => void;
+  onSuccess: (res: IKUploadResponse) => void;
   onProgress?: (progress: number) => void;
   fileType?: "pdf" | "image";
 }
