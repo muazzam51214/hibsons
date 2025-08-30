@@ -95,8 +95,9 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await ctx.params;
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
@@ -110,7 +111,7 @@ export async function DELETE(
 
     await connectDB();
 
-    const job = await Job.findByIdAndDelete(params.id);
+    const job = await Job.findByIdAndDelete(id);
 
     if (!job) {
       return NextResponse.json({ error: "Job not found" }, { status: 404 });
