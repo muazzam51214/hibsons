@@ -483,7 +483,7 @@ const ApplyJobSection = () => {
                       onSuccess={(uploadResponse) => {
                         setFormData((prev) => ({
                           ...prev,
-                          resumeUrl: uploadResponse.url,
+                          resumeUrl: uploadResponse.url ?? "",
                         }));
                       }}
                       onProgress={(progress) => {
